@@ -1,4 +1,7 @@
-import sqlite3
+#-*- coding: utf-8 -*-
+import sqlite3 as lite
+import sys
+
 #create a machine that will be able to ask his origines
 
 #concepts
@@ -16,21 +19,23 @@ class kindle:
 		self.object1 = object1
 		self.object2 = object2
 		kindle.kindleId += 1
+	#checker
 	def checker(self):
 		print "number of kindle happen so far: %d" %kindle.kindleId
 		print "object1 ::", self.object1, ",object2 ::", self.object2
+	
 
 time1 = kindle(222,924)
 time1.checker()
+
+
 #we want to save our data so we don't have to worry  about it no more.
-conn=sqlite3.connect('database.db')
-c= conn.cursor()
+con = lite.connect('../bin/test.db')
 
-c.execute('''CREATE TABLE memory
-			(id, obect1,object2,)''')
-c.execute(" INSERT INSERT INTO memory(time1.kindleId,time1.object1,time1.object2)")
+with con:
 
+	cur = con.cursor()
+	cur.execute("CREATE TABLE IF NOT EXISTS Abstracts(Id INT, Object1 INT, Object2 INT)")
+	cur.execute("INSERT INTO Abstracts VALUES(?,?,?)",(time1.kindleId,time1.object1,time1.object2))
 
-conn.commit()
-
-conn.close()
+	
