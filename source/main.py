@@ -2,7 +2,7 @@
 import sqlite3 as lite
 import sys
 
-#create a machine that will be able to ask his origines
+#create a machine that will be able to question it's origines, follow https://medium.com/@tonytam874/maths-and-the-rest-of-us-7f65c9e04fa2 to learn more about the driven theory
 
 #concepts
 #first phase is learning.
